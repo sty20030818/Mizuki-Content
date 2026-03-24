@@ -1,48 +1,49 @@
 name: Trigger EdgeOne Deployment
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      # 仅内容相关目录变化时触发
-      - "posts/**"
-      - "spec/**"
-      - "data/**"
-      - "images/**"
-  workflow_dispatch:
+    push:
+        branches:
+            - main
+        paths:
+            # 仅内容相关目录变化时触发
+            - "posts/**"
+            - "spec/**"
+            - "data/**"
+            - "images/**"
+    workflow_dispatch:
 
 jobs:
-  trigger:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger EdgeOne Deploy Hook
-        env:
-          EDGEONE_DEPLOY_HOOK: ${{ secrets.EDGEONE_DEPLOY_HOOK }}
-        run: |
-          if [ -z "$EDGEONE_DEPLOY_HOOK" ]; then
-            echo "未配置 EDGEONE_DEPLOY_HOOK Secret"
-            exit 1
-          fi
+    trigger:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Trigger EdgeOne Deploy Hook
+              env:
+                  EDGEONE_DEPLOY_HOOK: ${{ secrets.EDGEONE_DEPLOY_HOOK }}
+              run: |
+                  if [ -z "$EDGEONE_DEPLOY_HOOK" ]; then
+                    echo "未配置 EDGEONE_DEPLOY_HOOK Secret"
+                    exit 1
+                  fi
 
-          echo "正在触发 EdgeOne 部署..."
-          http_code=$(curl -sS -o /tmp/edgeone_response.txt -w "%{http_code}" -X POST "$EDGEONE_DEPLOY_HOOK")
+                  echo "正在触发 EdgeOne 部署..."
+                  http_code=$(curl -sS -o /tmp/edgeone_response.txt -w "%{http_code}" -X POST "$EDGEONE_DEPLOY_HOOK")
 
-          if [ "$http_code" = "200" ] || [ "$http_code" = "201" ] || [ "$http_code" = "202" ]; then
-            echo "EdgeOne 部署触发成功，HTTP: $http_code"
-          else
-            echo "EdgeOne 部署触发失败，HTTP: $http_code"
-            echo "---- response body ----"
-            cat /tmp/edgeone_response.txt || true
-            exit 1
-          fi
+                  if [ "$http_code" = "200" ] || [ "$http_code" = "201" ] || [ "$http_code" = "202" ]; then
+                    echo "EdgeOne 部署触发成功，HTTP: $http_code"
+                  else
+                    echo "EdgeOne 部署触发失败，HTTP: $http_code"
+                    echo "---- response body ----"
+                    cat /tmp/edgeone_response.txt || true
+                    exit 1
+                  fi
 
-      - name: Job summary
-        if: success()
-        run: |
-          echo "EdgeOne 部署已触发" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "**Commit Details:**" >> "$GITHUB_STEP_SUMMARY"
-          echo "- SHA: \`${{ github.sha }}\`" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Branch: \`${{ github.ref_name }}\`" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Message: ${{ github.event.head_commit.message || 'manual trigger' }}" >> "$GITHUB_STEP_SUMMARY"
+            - name: Job summary
+              if: success()
+              run: |
+                  echo "EdgeOne 部署已触发" >> "$GITHUB_STEP_SUMMARY"
+                  echo "" >> "$GITHUB_STEP_SUMMARY"
+                  echo "**Commit Details:**" >> "$GITHUB_STEP_SUMMARY"
+                  echo "- SHA: \`${{ github.sha }}\`" >> "$GITHUB_STEP_SUMMARY"
+                  echo "- Branch: \`${{ github.ref_name }}\`" >> "$GITHUB_STEP_SUMMARY"
+                  echo "- Message: ${{ github.event.head_commit.message || 'manual trigger' }}" >> "$GITHUB_STEP_SUMMARY"
+
