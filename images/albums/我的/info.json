@@ -1,0 +1,46 @@
+{
+	"mode": "external",
+	"hidden": false,
+	"title": "俺的相册",
+	"description": "这是一个 我的日常相册",
+	"date": "2026-01-01",
+	"location": "CloudFlare",
+	"tags": ["CloudFlare", "日常"],
+	"layout": "masonry",
+	"columns": 3,
+	"cover": "https://sty20030818.space/background.webp",
+	"photos": [
+		{
+			"id": "external-1",
+			"src": "https://sty20030818.space/avatar.png",
+			"alt": "1",
+			"title": "我的头像",
+			"description": "这是一张我的头像",
+			"tags": ["头像", "avatar"]
+		},
+		{
+			"id": "external-2",
+			"src": "https://sty20030818.space/round-avatar.png",
+			"alt": "1",
+			"title": "我的头像",
+			"description": "这是一张我的圆的头像",
+			"tags": ["头像", "avatar"]
+		},
+		{
+			"id": "external-3",
+			"src": "https://sty20030818.space/StoneFish.jpg",
+			"alt": "1",
+			"title": "我的简介",
+			"description": "这是一张我的简介",
+			"tags": ["简介"]
+		},
+		{
+			"id": "external-4",
+			"src": "https://sty20030818.space/background.webp",
+			"alt": "1",
+			"title": "我的背景图",
+			"description": "这是一张我的背景图",
+			"tags": ["背景图", " background"]
+		}
+	]
+}
