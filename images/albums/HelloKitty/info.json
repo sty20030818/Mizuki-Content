@@ -6,6 +6,6 @@
 	"location": "与光 AI",
 	"tags": ["与光 AI", "日常", "HelloKitty"],
 	"layout": "masonry",
-	"columns": 3,
-	"cover": "./HelloKitty5.jpeg"
+	"columns": 3
 }
+
