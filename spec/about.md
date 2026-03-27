@@ -1,6 +1,6 @@
 <div align="center">
 
-![StoneFish](/images/about/Header.png)
+<img src="https://pic.sty20030818.space/StoneFish.png" />
 
 </div>
 

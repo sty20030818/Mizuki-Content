@@ -1,16 +1,16 @@
 ---
-title: 'Git 常用简写说明书'
+title: "Git 常用简写说明书"
 published: 2026-03-23
 pinned: true
-description: 'Git 常用简写说明书'
+description: "Git 常用简写说明书"
 tags: [Git, 简写]
 category: Git
-licenseName: 'CC BY-NC-ND 4.0'
+licenseName: "CC BY-NC-ND 4.0"
 author: 我叫石头鱼
 draft: false
 comment: true
-image: './cover.jpeg'
-permalink: 'git-alias'
+image: "./cover.jpeg"
+permalink: "git-alias"
 ---
 
 这份文档只讲你平时最常用的这几个：
@@ -1441,3 +1441,4 @@ grhs HEAD~1
 3. 想清楚这个操作会影响：工作区、暂存区、本地历史，还是远程历史
 
 你只要把这三件事养成习惯，Git 翻车概率会明显下降。
+

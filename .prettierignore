@@ -24,7 +24,4 @@ Thumbs.db
 .env.local
 .env.*.local
 
-# Docs
-**/*.md
-
 .github
