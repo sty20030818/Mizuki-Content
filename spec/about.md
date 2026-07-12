@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://pic.sty20030818.space/StoneFish.png" />
+<img src="/assets/home/StoneFish.jpg" />
 
 </div>
 
